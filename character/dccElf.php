@@ -128,13 +128,15 @@
 
        $criticalDie = criticalDie($level);
 
-       $deedDie = deedDie($level);
+       $attackBonus = attackBonus($level);
 
        $actionDice = actionDice($level);
 
-       $threatRange = threatRange($level);
+       $knownSpells = knownSpells($level);
 
-       $title = title($level, $alignment);
+       $maxSpellLevel = maxSpellLevel($level);
+
+       $title = title($level);
        
        if(isset($_POST["thePatron"]))
        {
@@ -344,9 +346,9 @@
             ?>
         </span>
         
-        <span id="deedDie">
+        <span id="attackBonus">
             <?php
-                echo $deedDie;
+                echo "+" . $attackBonus;
             ?>
         </span>
 
@@ -359,11 +361,7 @@
             ?>
         </span>
 
-        <span id="threatRange">
-            <?php
-                echo $threatRange;
-            ?>
-        </span>
+        <span id="spellCheck"></span>
         
         <span id="title">
             <?php
@@ -382,6 +380,19 @@
         <span id="familar">
             <?php
                 echo $familar;
+            ?>
+        </span>
+
+        
+        <span id="knownSpells">
+            <?php
+                echo $knownSpells;
+            ?>
+        </span>
+
+        <span id="maxSpellLevel">
+            <?php
+                echo $maxSpellLevel;
             ?>
         </span>
         
@@ -514,14 +525,15 @@
             "addLanguages": "Common, Elf" + bonusLanguages,
             "armourClass": <?php echo $totalAcDefense ?> + baseAC,
             "hp": getHitPoints (level, staminaMod) + hitPointAdjustPerLevel(birthAugur,  luckMod),
-			"melee": strengthMod + meleeAdjust(birthAugur, luckMod),
-			"range": agilityMod + rangeAdjust(birthAugur, luckMod),
+            "spellCheck": <?php echo $level ?> + intelligenceMod,
+			"melee": <?php echo $attackBonus ?> + strengthMod + meleeAdjust(birthAugur, luckMod),
+			"range": <?php echo $attackBonus ?> + agilityMod + rangeAdjust(birthAugur, luckMod),
 			"meleeDamage": strengthMod + meleeDamageAdjust(birthAugur, luckMod),
 			"rangeDamage": rangeDamageAdjust(birthAugur, luckMod),
             "reflex": <?php echo $reflexBase ?> + agilityMod + adjustRef(birthAugur, luckMod),
             "fort": <?php echo $fortBase ?> + staminaMod + adjustFort(birthAugur,luckMod),
             "will": <?php echo $willBase ?> + personalityMod + adjustWill(birthAugur, luckMod),
-            "initiative": <?php echo $level ?> + agilityMod + adjustInit(birthAugur, luckMod)
+            "initiative": agilityMod + adjustInit(birthAugur, luckMod)
 
 		};
 	    if(elfCharacter.hitPoints <= 0 ){
@@ -599,6 +611,8 @@
       $("#baseAC").html("Base AC: " + data.acBase);
       $("#trainedWeapon").html("Trained Weapon: " + data.trainedWeapon);
       $("#tradeGoods").html("Trade Goods: " + data.tradeGoods);
+      
+      $("#spellCheck").html(addModifierSign(data.spellCheck));
       
 
 	 

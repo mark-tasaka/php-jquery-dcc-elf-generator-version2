@@ -228,10 +228,10 @@ body{
 	font-size: 0.6em;
 }
 
-#deedDie{
+#attackBonus{
     position:absolute;
     top: 353px;
-    left: 480px;
+    left: 495px;
 	font-size: 0.6em;
 }
 
@@ -249,10 +249,10 @@ body{
 	font-size: 0.6em;
 }
 
-#threatRange{
+#spellCheck{
     position:absolute;
     top: 390px;
-    left: 480px;
+    left: 495px;
 	font-size: 0.6em;
 }
 

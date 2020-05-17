@@ -157,11 +157,18 @@
 
 
 
-#luckyWeapon{
+#knownSpells{
     position:absolute;
-    top: 599px;
-    left: 475px;
-	font-size: 0.6em;
+    top: 600px;
+    left: 745px;
+	font-size: 0.7em;
+}
+
+#maxSpellLevel{
+    position:absolute;
+    top: 600px;
+    left: 880px;
+	font-size: 0.7em;
 }
 
 #patron{

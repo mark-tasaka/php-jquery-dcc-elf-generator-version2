@@ -3,7 +3,7 @@ designed by Mark Tasaka 2020*/
 
 function abilityScoreModifier(abilityScore)
 {
-    let modifier = 0;
+    var modifier = 0;
     
     if(abilityScore == 3)
         {
@@ -40,7 +40,7 @@ function abilityScoreModifier(abilityScore)
 
 function addModifierSign (modifer)
 {
-    let value = "";
+    var value = "";
     
     if(modifer >=0)
         {
